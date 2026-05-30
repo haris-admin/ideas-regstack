@@ -1,0 +1,46 @@
+use std.mem
+use std.env
+
+enum Industry {
+    real_estate,
+    legal,
+    accounting,
+    fintech,
+}
+
+enum RiskLevel {
+    low,
+    medium,
+    high,
+}
+
+shape Assessment {
+    customer_name: String,
+    score: i32,
+    level: RiskLevel,
+}
+
+fun industry_score(ind: Industry) -> i32 {
+    if ind == Industry.real_estate { return 30 }
+    if ind == Industry.legal { return 50 }
+    if ind == Industry.accounting { return 50 }
+    if ind == Industry.fintech { return 50 }
+    return 10
+}
+
+fun assess(name: String, ind: Industry, monthly: i32) -> Assessment {
+    let score = industry_score(ind)
+    let mut level = RiskLevel.medium
+    if score >= 50 { level = RiskLevel.high }
+    return Assessment { customer_name: name, score: score, level: level }
+}
+
+pub fun main(world: World) -> Void raises {
+    let a = assess("Jane Smith", Industry.real_estate, 50)
+    check world.out.write("Customer: ")
+    check world.out.write(a.customer_name)
+    check world.out.write("\n")
+    check world.out.write("Score: ")
+    check world.out.write(std.mem.format_i32(a.score))
+    check world.out.write("\n")
+}

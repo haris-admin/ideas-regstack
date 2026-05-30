@@ -1,0 +1,14 @@
+pub fun main(world: World) -> Void raises {
+    check world.out.write("RegStack Compliance Engine (Zero v0.1.3)\n")
+    check world.out.write("============================================\n")
+    check world.out.write("  REGSTACK COMPLIANCE REPORT\n")
+    check world.out.write("  Zero Lang Prototype v0.1.0\n")
+    check world.out.write("============================================\n")
+    check world.out.write("\n")
+    check world.out.write("Customer: Jane Smith - Level: LOW\n")
+    check world.out.write("Customer: Global Trade Corp - Level: MEDIUM\n")
+    check world.out.write("Customer: VIP Client Alpha - Level: HIGH\n")
+    check world.out.write("\n")
+    check world.out.write("STATUS: DRAFT\n")
+    check world.out.write("============================================\n")
+}

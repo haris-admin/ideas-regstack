@@ -24,16 +24,52 @@ Multiple regulatory deadlines are converging simultaneously:
 
 **The incumbent is spreadsheets + Word docs + email** — 60%+ of the SME market.
 
+## Quick Start
+
+### Prerequisites
+- Python 3.11+
+
+### 1. Clone & Set Up Database
+```bash
+git clone https://github.com/haris-admin/ideas-regstack.git
+cd ideas-regstack
+
+# Set up local SQLite database (dev)
+python db/migrate.py
+
+# Verify schema
+python db/migrate.py --verify
+```
+
+### Supabase Staging/Production
+```bash
+python db/migrate.py --to-pg --url "postgresql://user:pass@db.xxx.supabase.co:5432/postgres"
+```
+
+## Database
+
+| Environment | Engine | How to set up |
+|-------------|--------|---------------|
+| **Dev (local)** | SQLite | `python db/migrate.py` |
+| **Staging/Prod** | Supabase (PostgreSQL) | `python db/migrate.py --to-pg --url <supabase-url>` |
+
+### Tables
+- `regulations` — Regulatory obligations (jurisdiction, category, effective date)
+- `entities` — Regulated entities being tracked
+- `assessments` — Compliance assessments (entity × regulation × status)
+- `submissions` — Regulatory submissions and filings
+- `audit_trail` — Compliance audit log
+- `deadlines` — Upcoming compliance deadlines and reminders
+
 ## Repo Structure
 
 ```
 ideas-regstack/
-├── README.md              # This file — concept overview
-├── IDEATION.md            # Full feature requirements document
-├── MARKET.md              # Market sizing, competitive landscape, TAM analysis
-├── ARCHITECTURE.md        # Tech architecture, module structure, data flow
-├── ROADMAP.md             # 3-phase build plan with milestones
-├── MVP-SCOPE.md           # Weekend-buildable MVP scope (AUSTRAC Tranche 2)
-├── REGISTRY.md            # Regulation registry — tracked obligations by type
-└── RELATED.md             # Links to related ideas (startup-aml, guardrail-scan, etc.)
+├── README.md              # This file
+├── db/
+│   ├── migrate.py         # Standalone DB migration
+│   ├── schema.sql         # Full DDL
+│   └── README.md          # DB setup instructions
+├── docs/                  # Coming soon
+└── requirements.txt       # Python dependencies
 ```

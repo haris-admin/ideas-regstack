@@ -1,0 +1,11 @@
+use std.args
+
+pub fun main(world: World) -> Void raises {
+    let maybe_cmd = std.args.get(1)
+    if !maybe_cmd.has {
+        check world.out.write("no args\n")
+        return
+    }
+    check world.out.write(maybe_cmd.value)
+    check world.out.write("\n")
+}

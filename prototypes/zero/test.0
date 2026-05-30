@@ -1,0 +1,25 @@
+use std.mem
+use std.env
+use std.args
+
+enum Industry {
+    real_estate,
+    legal,
+}
+
+shape Result {
+    name: String,
+    ok: bool,
+}
+
+fun process(name: String, industry: Industry) -> Result {
+    let good = false
+    if industry == Industry.real_estate { good = true }
+    return Result { name: name, ok: good }
+}
+
+pub fun main(world: World) -> Void raises {
+    let r = process("test", Industry.real_estate)
+    check world.out.write(r.name)
+    check world.out.write("\n")
+}
