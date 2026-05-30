@@ -77,18 +77,23 @@ regstack/
     └── abr/                 # ABN/entity validation
 ```
 
-## Technology Stack (Recommended)
+## Technology Stack (Confirmed)
+
+> ⚡ **See `STACK.md` for the definitive decision record and deployment guide.**
 
 | Layer | Technology | Rationale |
 |:------|:-----------|:----------|
-| **Frontend** | React + TypeScript | Component reuse, form-heavy UI |
-| **Backend** | Python (FastAPI) or Node | FastAPI aligns with existing POCs |
-| **Database** | PostgreSQL | Relational compliance data, ACID compliance |
-| **Document store** | S3/MinIO | Encrypted document storage with retention policies |
+| **Frontend** | **Next.js** (React + TypeScript) | Component reuse, form-heavy UI, Vercel-native |
+| **Backend** | **Python / FastAPI** | Pydantic validation critical for compliance; async-first |
+| **Database** | **Supabase** (PostgreSQL 15+) | Staging + production, RLS for multi-tenant, auto-backups |
+| **Auth** | Supabase Auth (JWT) | Integrated with Supabase, RLS-ready |
+| **Storage** | **Cloudflare R2** | S3-compatible, 10 GB free, no egress fees |
+| **Document store** | Cloudflare R2 | Encrypted document storage with retention policies |
 | **Vector store** | ChromaDB/Pinecone | RAG for AI compliance advisor |
 | **Workflow engine** | Custom lightweight (or Temporal) | Config-driven, not code-driven |
-| **Identity** | Auth0 or Cognito | Multi-tenant SSO |
 | **PDF generation** | WeasyPrint / Puppeteer | Regulator-formatted output |
+| **Hosting** | **Vercel** (preferred) or Netlify | Frontend deployment |
+| **Runtime Alt** | Bun (per-project), Zero Lang (CLI admin tools) | |
 | **CI/CD** | GitHub Actions | Already in use across fleet |
 
 ## Data Model (Core Entities)

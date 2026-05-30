@@ -70,6 +70,7 @@ ideas-regstack/
 │   ├── migrate.py         # Standalone DB migration
 │   ├── schema.sql         # Full DDL
 │   └── README.md          # DB setup instructions
+├── STACK.md               # ✅ Confirmed tech stack (Python/Next.js/Supabase/R2/Vercel)
 ├── docs/                  # Coming soon
 └── requirements.txt       # Python dependencies
 ```

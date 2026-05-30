@@ -28,11 +28,16 @@
 
 ### Phase 1 Technical Scope
 
-- **Frontend:** React SPA — 6 screens (Profile, CDD, Reports, Calendar, Documents, Settings)
-- **Backend:** FastAPI — 15 endpoints
+> **Full tech stack confirmed: See `STACK.md` for definitive decisions.**
+
+- **Frontend:** Next.js 14+ (TypeScript, Tailwind CSS) — 6 screens (Profile, CDD, Reports, Calendar, Documents, Settings)
+- **Backend:** Python / FastAPI — 15+ endpoints
+- **Database:** Supabase (PostgreSQL 15+) — both staging and production
+- **Auth:** Supabase Auth (JWT) — multi-tenant with RLS
+- **Storage:** Cloudflare R2 — documents, evidence, reports
+- **Hosting:** Vercel (frontend) + container/VPS (backend)
 - **Integrations:** GreenID (identity), AUSTRAC (reporting), ABR (entity lookup)
-- **Database:** PostgreSQL + S3 for documents
-- **Auth:** Multi-tenant, role-based
+- **Runtime Alt:** Bun for edge/JS components; Zero Lang for CLI admin tools
 
 ### Phase 1 Pricing
 
