@@ -1,2 +1,14 @@
 # Database files
 *.db
+
+# Security scan additions
+*.exe
+__pycache__/
+*.pyc
+.env
+.env.*
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
